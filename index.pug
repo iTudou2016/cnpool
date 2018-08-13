@@ -2,14 +2,14 @@
 html
   head
     meta(charset='utf-8' name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1")
-    meta(http-equiv="refresh" content="120")
+    meta(http-equiv="refresh" content="300")
+    meta(name="description" content="cnPool.vip mining pool, low fee, fast payment.")
     link(href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet")
     link(href="//cdn.bootcss.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet")
     link(href="/css/style.css" rel="stylesheet")
     script(src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js")
 
-    title!=title
-    link(REL='SHORTCUT ICON' href='https://snowblossom.org/snow-icon.png')
+    title 空气池cnPool.vip-It's time to breathe fresh air.
     style(type="text/css").
       .hostname {color:#2f2f4f;font-size: 22px;line-height: 50px;}
       h2 {color: #0066cc;font-size: 32px;}
@@ -17,25 +17,32 @@ html
     mixin poolcard(bgcolor, pool) 
              div(class="col-md-4 col-sm-6")
                  div(id="coin")
-                     a(href="https://aqua.cnpool.vip")
-                         span(class="name") AQUA: Aquachain
+                     a(href=pool.poolLink)
+                         span(class="name" style="background-color:"+ bgcolor) #{pool.poolName}
                          ul(class="stats")
                              li 算法类型：
-                                 span Argon2id
+                                 span #{pool.poolAlgo}
+                             li 全网算力：
+                                 span #{pool.networkHashrate}
                              li 矿池算力：
-                                 span Argon2id
+                                 span #{pool.poolHashrate}
+                             li 在线矿工：
+                                 span #{pool.poolMiners}
+                             li 发现区块：
+                                 span #{pool.poolBlocks}
     div(class="container")
         div(class="row")
             center
-                h1 空气池 cnpool.vip
-            +poolcard("fa fa-arrows", "poolhash")
-            +poolcard("fa fa-arrows", "poolhash")
-            +poolcard("fa fa-arrows", "poolhash")
-            +poolcard("fa fa-arrows", "poolhash")
-    footer
+              h1 空气池 cnpool.vip
+            center
+              font(color="#1874CD") It's time to breathe fresh air.
+            h2
+            - var poolbgcolor = ["#ee7600","#1874CD","#FF1CAE","#8B008B","#461E59","#0000FF","#008B00","#8B7B8B","#A020F0"]
+            each item, index in poolstats
+              +poolcard(poolbgcolor[index], item)
+  footer
         div(class="text-muted")
            span Powered by 
              a(target="_blank" href="http://www.cnpool.vip")
-                i(class="fa fa-snowflake-o")
-                span  www.cnpool.vip 泥巴池 
-                i(class="fa fa-snowflake-o")
+                span  空气池cnpool.vip 
+           span   QQ交流群：686394624

@@ -4,7 +4,7 @@
 @import url(//fonts.googleapis.com/css?family=Inconsolata:400,700);
 
 body {
-  background-color: red;
+  background-color: #ffffff;
   font-family: 'Roboto', Helvetica, Arial, sans-serif;
   line-height: 1.428571429;
   color: #262626;
@@ -14,7 +14,7 @@ body {
   overflow-y: scroll;
 }
 a {
-  color: red;
+  color: #014e71;
 }
 a:hover, a:focus {
   color: #0274a8;
@@ -96,6 +96,26 @@ code {
  **/
 #header { background-color: #024e72; text-align: center; padding: 10px; border-bottom: 1px solid #262626; margin-bottom: 40px; }
 #header img { max-width: 90%; }
+
+/* Footer */
+footer{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #262626;
+  font-size: 14px;
+  color: #efefef;
+  z-index: 9999;
+}
+footer a {
+  color: #6ED5EE;
+}
+footer > div{
+  color: #fff;
+  margin: 10px auto;
+  text-align: center;
+}
+
 
 /**
  * Coin

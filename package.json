@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/iTudou2016/cnpool/issues"
   },
-  "homepage": "https://github.com/iTudou2016/cnpool#readme"
+  "homepage": "https://github.com/iTudou2016/cnpool#readme",
+  "dependencies": {
+    "async": "^2.6.1",
+    "express": "^4.16.3",
+    "pug": "^2.0.3"
+  }
 }

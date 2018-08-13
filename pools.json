@@ -12,14 +12,20 @@
 "api": "report.json"
 },
 {
+"name": "FML: fimfl",
+"link": "https://fml.cnpool.vip",
+"algo": "Crytonight",
+"api": "https://www.cnpool.vip:8199"
+},
+{
 "name": "LMO: lumeneo",
-"algo": "cn-lite",
+"algo": "Cryptonight",
 "link": "https://lmo.cnpool.vip",
 "api": "https://www.cnpool.vip:9139"
 },
 {
 "name": "PLE: plenteum",
-"algo": "cn-lite",
+"algo": "Cryptonight",
 "link": "https://ple.cnpool.vip",
 "api": "https://www.cnpool.vip:9249"
 }

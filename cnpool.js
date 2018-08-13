@@ -13,8 +13,8 @@ app.set('view engine', 'pug');
 app.get('/', function(req, res) {
 updatePools(res);
 });
-app.get('/css/default.css', function(req, res) {
-res.sendFile(__dirname+'/css/default.css');
+app.get('/css/style.css', function(req, res) {
+res.sendFile(__dirname+'/css/style.css');
 });
 
 // POST method route
@@ -22,7 +22,7 @@ app.post('/', function (req, res) {
 
 });
 
-var server = app.listen(6666, function () {
+var server = app.listen(9000, function () {
 var host = server.address().address;
 var port = server.address().port;
   console.log('cnPool.vip listening at http://%s:%s', host, port);
@@ -45,13 +45,16 @@ async.each(pools, function(pool, callback) {
     {
      //file json file.
      case 'SNOW: Snowblossom':
-            var snow = JSON.parse(fs.readFileSync( "report.json"));
+            var snow = JSON.parse(fs.readFileSync( "/var/snowblossom/report.json"));
             console.log(pool.name+ ": " + "");
             poolstats.push({
                   poolName : pool.name,
                   poolAlgo : pool.algo,
                   poolLink : pool.link,
+                  poolMiners : snow.workers || 0,
+                  poolBlocks : snow.blockfound.length-1 || 0, 
                   poolHashrate : /\d+.\d+[K|M]?\/s/.exec(snow.poolhash),
+                  networkHashrate : snow.networkhash,
             }); 
          callback();
          break;
@@ -71,16 +74,50 @@ async.each(pools, function(pool, callback) {
                     console.log(pool.name+ ": " + json.hashrate);
                     poolstats.push({
                           poolName : pool.name,
+                          poolAlgo : pool.algo,
+                          poolLink : pool.link,
                           poolHashrate : getReadableHashRate(json.hashrate),
+                          poolMiners : json.minersTotal || 0,
+                          poolBlocks : json.maturedTotal+json.immatureTotal || 0,
+                          networkHashrate : getReadableHashRate(json.nodes[0].difficulty/240),
                     });
                     callback();
                     break;
                //normally, for cryptonight algo.
                default:
                     console.log(pool.name+ ": " + json.pool.hashrate);
+
+                    var cnAlgorithm = json.config.cnAlgorithm || "cryptonight";
+                    var cnVariant = json.config.cnVariant || 0;       
+                    if (cnAlgorithm == "cryptonight_light") {
+                       if (cnVariant === 1) {
+                          algorithm = 'Cryptonight Light v7';
+                       } else if (cnVariant === 2) {
+                          algorithm = 'Cryptonight Light';
+                       } else {
+                          algorithm = 'Cryptonight Light';
+                       }
+                     }
+                     else if (cnAlgorithm == "cryptonight_heavy") {
+                        algorithm = 'Cryptonight Heavy';
+                     }
+                     else {
+                        if (cnVariant === 1) {
+                           algorithm = 'Cryptonight v7';
+                        } else if (cnVariant === 3) {
+                           algorithm = 'Cryptonight v7';
+                        } else {
+                           algorithm = 'Cryptonight';
+                        }
+                     }
                     poolstats.push({
                           poolName : pool.name,
+                          poolAlgo : algorithm || pool.algo,
+                          poolLink : pool.link,
+                          poolMiners : json.pool.miners || 0,
                           poolHashrate : getReadableHashRate(json.pool.hashrate),
+                          poolBlocks : json.pool.totalBlocks || 0,
+                          networkHashrate : getReadableHashRate(json.network.difficulty / json.config.coinDifficultyTarget),
                     });
                     callback();
                     break;
@@ -101,6 +138,7 @@ async.each(pools, function(pool, callback) {
     } else {
       console.log('All files have been processed successfully');
       console.log("poolstats: " + poolstats[0].poolHashrate + " " + poolstats[1].poolHashrate + " " + poolstats[2].poolHashrate+ " " + poolstats[3].poolHashrate );
+      res.render("index", {poolstats: poolstats});
     }
 });
 }
