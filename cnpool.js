@@ -36,17 +36,14 @@ var port = server.address().port;
 function updatePools(res) {
 var pools = JSON.parse(fs.readFileSync( "pools.json"));
 var poolstats = [];
-console.log(pools);
 // assuming openFiles is an array of file names
 async.each(pools, function(pool, callback) {
     // Perform operation on pool here.
-    console.log('Processing pool: ' + pool.name);
     switch(pool.name) 
     {
-     //file json file.
+     //from json file.
      case 'SNOW: Snowblossom':
             var snow = JSON.parse(fs.readFileSync( "/var/snowblossom/report.json"));
-            console.log(pool.name+ ": " + "");
             poolstats.push({
                   poolName : pool.name,
                   poolAlgo : pool.algo,
@@ -71,7 +68,6 @@ async.each(pools, function(pool, callback) {
               switch(pool.name)
               {
                case 'AQUA: aquachain':
-                    console.log(pool.name+ ": " + json.hashrate);
                     poolstats.push({
                           poolName : pool.name,
                           poolAlgo : pool.algo,
@@ -85,8 +81,6 @@ async.each(pools, function(pool, callback) {
                     break;
                //normally, for cryptonight algo.
                default:
-                    console.log(pool.name+ ": " + json.pool.hashrate);
-
                     var cnAlgorithm = json.config.cnAlgorithm || "cryptonight";
                     var cnVariant = json.config.cnVariant || 0;       
                     if (cnAlgorithm == "cryptonight_light") {
@@ -137,7 +131,6 @@ async.each(pools, function(pool, callback) {
       console.log('A pool failed to process');
     } else {
       console.log('All files have been processed successfully');
-      console.log("poolstats: " + poolstats[0].poolHashrate + " " + poolstats[1].poolHashrate + " " + poolstats[2].poolHashrate+ " " + poolstats[3].poolHashrate );
       res.render("index", {poolstats: poolstats});
     }
 });
