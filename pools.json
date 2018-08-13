@@ -1,0 +1,26 @@
+[
+{
+"name": "AQUA: aquachain",
+"link": "https://aqua.cnpool.vip",
+"algo": "Argon2id",
+"api": "https://aqua.cnpool.vip/api"
+},
+{
+"name": "SNOW: Snowblossom",
+"algo": "Snowblossom",
+"link": "https://snow.cnpool.vip",
+"api": "report.json"
+},
+{
+"name": "LMO: lumeneo",
+"algo": "cn-lite",
+"link": "https://lmo.cnpool.vip",
+"api": "https://www.cnpool.vip:9139"
+},
+{
+"name": "PLE: plenteum",
+"algo": "cn-lite",
+"link": "https://ple.cnpool.vip",
+"api": "https://www.cnpool.vip:9249"
+}
+]

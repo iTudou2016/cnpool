@@ -1,0 +1,41 @@
+﻿doctype html
+html
+  head
+    meta(charset='utf-8' name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1")
+    meta(http-equiv="refresh" content="120")
+    link(href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet")
+    link(href="//cdn.bootcss.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet")
+    link(href="/css/style.css" rel="stylesheet")
+    script(src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js")
+
+    title!=title
+    link(REL='SHORTCUT ICON' href='https://snowblossom.org/snow-icon.png')
+    style(type="text/css").
+      .hostname {color:#2f2f4f;font-size: 22px;line-height: 50px;}
+      h2 {color: #0066cc;font-size: 32px;}
+  body
+    mixin poolcard(bgcolor, pool) 
+             div(class="col-md-4 col-sm-6")
+                 div(id="coin")
+                     a(href="https://aqua.cnpool.vip")
+                         span(class="name") AQUA: Aquachain
+                         ul(class="stats")
+                             li 算法类型：
+                                 span Argon2id
+                             li 矿池算力：
+                                 span Argon2id
+    div(class="container")
+        div(class="row")
+            center
+                h1 空气池 cnpool.vip
+            +poolcard("fa fa-arrows", "poolhash")
+            +poolcard("fa fa-arrows", "poolhash")
+            +poolcard("fa fa-arrows", "poolhash")
+            +poolcard("fa fa-arrows", "poolhash")
+    footer
+        div(class="text-muted")
+           span Powered by 
+             a(target="_blank" href="http://www.cnpool.vip")
+                i(class="fa fa-snowflake-o")
+                span  www.cnpool.vip 泥巴池 
+                i(class="fa fa-snowflake-o")
