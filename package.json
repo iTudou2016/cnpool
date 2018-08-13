@@ -1,0 +1,19 @@
+{
+  "name": "cnpool",
+  "version": "1.0.0",
+  "description": "cnpool homepage",
+  "main": "cnpool.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iTudou2016/cnpool.git"
+  },
+  "author": "xxcc",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iTudou2016/cnpool/issues"
+  },
+  "homepage": "https://github.com/iTudou2016/cnpool#readme"
+}
