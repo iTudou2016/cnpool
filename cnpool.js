@@ -11,7 +11,7 @@ app.set('views','.');
 app.set('view engine', 'pug');
 
 app.get('/', function(req, res) {
-getShare(res);
+updatePools(res);
 });
 app.get('/css/default.css', function(req, res) {
 res.sendFile(__dirname+'/css/default.css');
@@ -30,8 +30,8 @@ var port = server.address().port;
 
 
 // Initialize
-setInterval(updatePools, (30*1000));
-updatePools("dd");
+//setInterval(updatePools, (30*1000));
+//updatePools("dd");
 
 function updatePools(res) {
 var pools = JSON.parse(fs.readFileSync( "pools.json"));
