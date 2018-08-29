@@ -34,8 +34,15 @@ var port = server.address().port;
 //updatePools("dd");
 
 function updatePools(res) {
-var pools = JSON.parse(fs.readFileSync( "pools.json"));
+var poolsAll = JSON.parse(fs.readFileSync( "pools.json"));
 var poolstats = [];
+var pools = [];
+poolsAll.forEach(function(item) {
+   // 获取已上线矿池信息
+   if (item.enable) {
+       pools.push(item);
+   }
+});
 // assuming openFiles is an array of file names
 async.each(pools, function(pool, callback) {
     // Perform operation on pool here.
