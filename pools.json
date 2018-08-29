@@ -1,29 +1,41 @@
 [
 {
+"enable": true,
 "name": "AQUA: aquachain",
 "link": "https://aqua.cnpool.vip",
 "algo": "Argon2id",
 "api": "https://aqua.cnpool.vip/api"
 },
 {
+"enable": false,
 "name": "SNOW: Snowblossom",
 "algo": "Snowblossom",
 "link": "https://snow.cnpool.vip",
 "api": "report.json"
 },
 {
+"enable": true,
 "name": "FML: fimfl",
 "link": "https://fml.cnpool.vip",
 "algo": "Crytonight",
 "api": "https://www.cnpool.vip:8199"
 },
 {
+"enable": true,
 "name": "LMO: lumeneo",
 "algo": "Cryptonight",
 "link": "https://lmo.cnpool.vip",
 "api": "https://www.cnpool.vip:9139"
 },
 {
+"enable": true,
+"name": "FEND: f.e.n.d",
+"algo": "Cryptonight",
+"link": "https://fend.cnpool.vip",
+"api": "https://www.cnpool.vip:6011"
+},
+{
+"enable": false,
 "name": "PLE: plenteum",
 "algo": "Cryptonight",
 "link": "https://ple.cnpool.vip",
