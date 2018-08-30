@@ -40,6 +40,13 @@ html
             - var poolbgcolor = ["#ee7600","#1874CD","#FF1CAE","#8B008B","#461E59","#0000FF","#008B00","#8B7B8B","#A020F0"]
             each item, index in poolstats
               +poolcard(poolbgcolor[index], item)
+            div(class="col-md-4 col-sm-6")
+                div(id="coin")
+                     span(class="name" style="background-color: #000000") 已下线矿池
+                     ul(class="stats")
+                        each item in poolsOffline
+                            li
+                              center #{item.name}              
   footer
         div(class="text-muted")
            span Powered by 
