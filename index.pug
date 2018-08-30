@@ -46,7 +46,7 @@ html
                 div(id="coin")
                      span(class="name" style="background-color: #000000") 已下线矿池
                      ul(class="stats")
-                        each item in poolsOffline
+                        each item, index in poolsOffline
                             li
                               center #{item.name}              
   footer
