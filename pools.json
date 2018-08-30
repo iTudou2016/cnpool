@@ -4,41 +4,47 @@
 "name": "AQUA: aquachain",
 "link": "https://aqua.cnpool.vip",
 "algo": "Argon2id",
-"api": "https://aqua.cnpool.vip/api"
+"api": "https://aqua.cnpool.vip/api",
+"remark": "CPU专享"
 },
 {
 "enable": false,
 "name": "SNOW: Snowblossom",
 "algo": "Snowblossom",
 "link": "https://snow.cnpool.vip",
-"api": "report.json"
+"api": "report.json",
+"remark": "高大上，拼I/O"
 },
 {
 "enable": true,
 "name": "FML: fimfl",
 "link": "https://fml.cnpool.vip",
 "algo": "Crytonight",
-"api": "https://www.cnpool.vip:8199"
+"api": "https://www.cnpool.vip:8199",
+"remark": "矿机ASIC适用"
 },
 {
 "enable": true,
 "name": "LMO: lumeneo",
 "algo": "Cryptonight",
 "link": "https://lmo.cnpool.vip",
-"api": "https://www.cnpool.vip:9139"
+"api": "https://www.cnpool.vip:9139",
+"remark": "CPU和A卡适用"
 },
 {
 "enable": true,
 "name": "FEND: f.e.n.d",
 "algo": "Cryptonight",
 "link": "https://fend.cnpool.vip",
-"api": "https://www.cnpool.vip:6011"
+"api": "https://www.cnpool.vip:6011",
+"remark": "开发已挂，准备下线"
 },
 {
 "enable": false,
 "name": "PLE: plenteum",
 "algo": "Cryptonight",
 "link": "https://ple.cnpool.vip",
-"api": "https://www.cnpool.vip:9249"
+"api": "https://www.cnpool.vip:9249",
+"remark": "CPU和A卡适用"
 }
 ]
