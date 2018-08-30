@@ -37,11 +37,14 @@ function updatePools(res) {
 var poolsAll = JSON.parse(fs.readFileSync( "pools.json"));
 var poolstats = [];
 var pools = [];
+var poolsOffline = [];
 poolsAll.forEach(function(item) {
-   // 获取已上线矿池信息
-   if (item.enable) {
+    // 获取已上线矿池信息
+    if (item.enable) {
        pools.push(item);
-   }
+    } else {
+       poolsOffline.push(item);
+    }
 });
 // assuming openFiles is an array of file names
 async.each(pools, function(pool, callback) {
@@ -136,9 +139,10 @@ async.each(pools, function(pool, callback) {
       // One of the iterations produced an error.
       // All processing will now stop.
       console.log('A pool failed to process');
+      res.render("index", {poolstats: poolstats, poolsOffline: poolsOffline});
     } else {
-      console.log('All files have been processed successfully');
-      res.render("index", {poolstats: poolstats});
+      console.log('All pools have been processed successfully');
+      res.render("index", {poolstats: poolstats, poolsOffline: poolsOffline});
     }
 });
 }
