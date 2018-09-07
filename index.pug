@@ -20,17 +20,17 @@ html
                      a(href=pool.poolLink)
                          span(class="name" style="background-color:"+ bgcolor) #{pool.poolName}
                          ul(class="stats")
-                             li 算法类型：
+                             li ALGO:
                                  span #{pool.poolAlgo}
-                             li 全网算力：
+                             li NET HASHRATE:
                                  span #{pool.networkHashrate}
-                             li 矿池算力：
+                             li POOL HASHRATE:
                                  span #{pool.poolHashrate}
-                             li 在线矿工：
+                             li MINERS:
                                  span #{pool.poolMiners}
-                             li 发现区块：
+                             li BLOCK FOUND:
                                  span #{pool.poolBlocks}
-                             li 矿池备注：
+                             li REMARK:
                                  span #{pool.poolRemark}                                 
     div(class="container")
         div(class="row")
@@ -44,7 +44,7 @@ html
               +poolcard(poolbgcolor[index], item)
             div(class="col-md-4 col-sm-6")
                 div(id="coin")
-                     span(class="name" style="background-color: #000000") 已下线矿池
+                     span(class="name" style="background-color: #000000") Offline Pools
                      ul(class="stats")
                         each item in poolsOffline
                             li
