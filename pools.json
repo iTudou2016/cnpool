@@ -5,7 +5,7 @@
 "link": "https://aqua.cnpool.vip",
 "algo": "Argon2id",
 "api": "https://aqua.cnpool.vip/api",
-"remark": "CPU专享"
+"remark": "CPU专享|safe.trade"
 },
 {
 "enable": false,
@@ -21,7 +21,15 @@
 "link": "https://fml.cnpool.vip",
 "algo": "Crytonight",
 "api": "https://www.cnpool.vip:8199",
-"remark": "矿机ASIC适用"
+"remark": "矿机ASIC适用|cfinex.com"
+},
+{
+"enable": true,
+"name": "XARI: xaria",
+"algo": "Cryptonight",
+"link": "https://xari.cnpool.vip",
+"api": "https://www.cnpool.vip:6013",
+"remark": "CPU和A卡适用"
 },
 {
 "enable": true,
@@ -29,10 +37,10 @@
 "algo": "Cryptonight",
 "link": "https://lmo.cnpool.vip",
 "api": "https://www.cnpool.vip:9139",
-"remark": "CPU和A卡适用"
+"remark": "CPU和A卡适用|maplechange.com"
 },
 {
-"enable": true,
+"enable": false,
 "name": "FEND: f.e.n.d",
 "algo": "Cryptonight",
 "link": "https://fend.cnpool.vip",
