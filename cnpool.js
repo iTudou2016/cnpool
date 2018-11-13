@@ -49,6 +49,7 @@ var cpuloadAll = JSON.parse(fs.readFileSync( "cpuloadAll.json"));
     cpuload: cpuload,
     lastSeen: lastSeen
   });
+fs.writeFileSync("cpuloadAll.json", JSON.stringify(cpuloadAll));
 res.end();
 }
 
