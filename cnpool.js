@@ -7,6 +7,9 @@ const https = require('https');
 const fs=require('fs');
 const async = require("async");
 
+var bodyParser = require('body-parser');
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
 app.set('views','.');
 app.set('view engine', 'pug');
 
@@ -18,8 +21,8 @@ res.sendFile(__dirname+'/css/style.css');
 });
 
 // POST method route
-app.post('/', function (req, res) {
-
+app.post('/tera', function (req, res) {
+updateTeraRigs(req,res);
 });
 
 var server = app.listen(9000, function () {
@@ -32,6 +35,22 @@ var port = server.address().port;
 // Initialize
 //setInterval(updatePools, (30*1000));
 //updatePools("dd");
+
+function updateTeraRigs(req, res) {
+var cpuload = req.body.cpuload;
+var rigIP = req.headers['x-forwarded-for'] ||
+      req.connection.remoteAddress ||
+      req.socket.remoteAddress ||
+      req.connection.socket.remoteAddress;
+var lastSeen = Data.now();
+var cpuloadAll = JSON.parse(fs.readFileSync( "cpuloadAll.json"));
+  cpuloadAll.push({
+    rigIP: rigIP,
+    cpuload: cpuload,
+    lastSeen: lastSeen
+  });
+res.end();
+}
 
 function updatePools(res) {
 var poolsAll = JSON.parse(fs.readFileSync( "pools.json"));
