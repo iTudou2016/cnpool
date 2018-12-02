@@ -7,22 +7,18 @@ const https = require('https');
 const fs=require('fs');
 const async = require("async");
 
-var bodyParser = require('body-parser');
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
 app.set('views','.');
 app.set('view engine', 'pug');
 
 app.get('/', function(req, res) {
 updatePools(res);
 });
-app.get('/css/style.css', function(req, res) {
-res.sendFile(__dirname+'/css/style.css');
-});
+
+app.use(express.static('css'));
 
 // POST method route
-app.post('/tera', function (req, res) {
-updateTeraRigs(req,res);
+app.post('/', function (req, res) {
+
 });
 
 var server = app.listen(9000, function () {
@@ -35,23 +31,6 @@ var port = server.address().port;
 // Initialize
 //setInterval(updatePools, (30*1000));
 //updatePools("dd");
-
-function updateTeraRigs(req, res) {
-var cpuload = req.body.cpuload;
-var rigIP = req.headers['x-forwarded-for'] ||
-      req.connection.remoteAddress ||
-      req.socket.remoteAddress ||
-      req.connection.socket.remoteAddress;
-var lastSeen = Data.now();
-var cpuloadAll = JSON.parse(fs.readFileSync( "cpuloadAll.json"));
-  cpuloadAll.push({
-    rigIP: rigIP,
-    cpuload: cpuload,
-    lastSeen: lastSeen
-  });
-fs.writeFileSync("cpuloadAll.json", JSON.stringify(cpuloadAll));
-res.end();
-}
 
 function updatePools(res) {
 var poolsAll = JSON.parse(fs.readFileSync( "pools.json"));
@@ -69,7 +48,7 @@ poolsAll.forEach(function(item) {
 // assuming openFiles is an array of file names
 async.each(pools, function(pool, callback) {
     // Perform operation on pool here.
-    switch(pool.name) 
+    switch(pool.name)
     {
      //from json file.
      case 'SNOW: Snowblossom':
@@ -80,10 +59,10 @@ async.each(pools, function(pool, callback) {
                   poolLink : pool.link,
                   poolRemark : pool.remark,
                   poolMiners : snow.workers || 0,
-                  poolBlocks : snow.blockfound.length-1 || 0, 
+                  poolBlocks : snow.blockfound.length-1 || 0,
                   poolHashrate : /\d+.\d+[K|M]?\/s/.exec(snow.poolhash),
                   networkHashrate : snow.networkhash,
-            }); 
+            });
          callback();
          break;
      //from general api.
@@ -114,7 +93,7 @@ async.each(pools, function(pool, callback) {
                //normally, for cryptonight algo.
                default:
                     var cnAlgorithm = json.config.cnAlgorithm || "cryptonight";
-                    var cnVariant = json.config.cnVariant || 0;       
+                    var cnVariant = json.config.cnVariant || 0;
                     if (cnAlgorithm == "cryptonight_light") {
                        if (cnVariant === 1) {
                           algorithm = 'Cryptonight Light v7';
@@ -153,7 +132,7 @@ async.each(pools, function(pool, callback) {
      }).on('error', function (e) {
           console.error(e);
           callback(e);
-     }); 
+     });
          break;
     }
 }, function(err) {
