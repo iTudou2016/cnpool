@@ -6,13 +6,13 @@ html
     meta(name="description" content="cnPool.vip mining pool, low fee, fast payment.")
     link(href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet")
     link(href="//cdn.bootcss.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet")
-    link(href="/css/style.css" rel="stylesheet")
+    link(href="/style.css" rel="stylesheet")
     script(src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js")
 
     title 空气池cnPool.vip-It's time to breathe fresh air.
     style(type="text/css").
       .hostname {color:#2f2f4f;font-size: 22px;line-height: 50px;}
-      h2 {color: #0066cc;font-size: 32px;}
+      h2 {color: #0066cc;font-size: 28px;}
     script.
       var _hmt = _hmt || [];
       (function() {
@@ -20,9 +20,9 @@ html
       hm.src = "https://hm.baidu.com/hm.js?39b6637dcd772f83eb0135a8634be130";
       var s = document.getElementsByTagName("script")[0];
       s.parentNode.insertBefore(hm, s);
-      })();      
+      })();
   body
-    mixin poolcard(bgcolor, pool) 
+    mixin poolcard(bgcolor, pool)
              div(class="col-md-4 col-sm-6")
                  div(id="coin")
                      a(href=pool.poolLink)
@@ -39,13 +39,14 @@ html
                              li 发现区块：
                                  span #{pool.poolBlocks}
                              li 矿池备注：
-                                 span #{pool.poolRemark}                                 
+                                 span #{pool.poolRemark}
     div(class="container")
         div(class="row")
             center
-              h1 空气池 cnpool.vip
-            center
+              h2 空气池 cnpool.vip
               font(color="#1874CD") It's time to breathe fresh air.
+              p
+                a(href="https://ann.cnpool.vip")   ANN 更新
             h2
             - var poolbgcolor = ["#ee7600","#1874CD","#FF1CAE","#8B008B","#461E59","#0000FF","#008B00","#8B7B8B","#A020F0"]
             each item, index in poolstats
@@ -60,8 +61,7 @@ html
                         li 　
   footer
         div(class="text-muted")
-           span Powered by 
+           span 出品:
              a(target="_blank" href="https://www.cnpool.vip")
-                span  空气池cnpool.vip 
-           span   QQ交流群：686394624
-             a(href="http://18.136.47.113")   小福利
+                span  空气池
+           span   QQ群:686394624
